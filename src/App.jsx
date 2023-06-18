@@ -35,28 +35,19 @@ export default function App() {
       <button className="btn">add to list</button>
     </form>
      <h1 className="header">shopping list</h1>
-     <ul className="list">
-        <li>
-          <label>
-            <input type="checkbox" />
-            item 1
-          </label>
-          <button className="btn btn-danger">already bought</button>
-        </li>
-        <li>
-          <label>
-            <input type="checkbox" />
-            item 2
-          </label>
-          <button className="btn btn-danger">already bought</button>
-        </li>
-        <li>
-          <label>
-            <input type="checkbox" />
-            item 3
-          </label>
-          <button className="btn btn-danger">already bought</button>
-        </li>
+     <ul className="list">     
+      {/* loops in react/jsx with .map*/}
+        {todos.map(todo => {
+          return (
+            <li key={todo.it}>           {/* individual key prop is needed*/}
+              <label>
+                <input type="checkbox" checked={todo.completed} />
+                {todo.title}
+              </label>
+              <button className="btn btn-danger">already bought</button>
+          </li>
+          )
+       })}         
      </ul>
   </>
   )
