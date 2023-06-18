@@ -11,6 +11,7 @@ export default function App() {
     return JSON.parse(localValue)
     }
   )
+ // HOOKS can NEVER be inside an if statement, loop, return, etc.
 //new hook 4 storing info -- here every update of todos -- in local storage
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(todos))
@@ -54,3 +55,5 @@ export default function App() {
   </>
   )
 }
+
+// always same structure: hooks, funcs, return w/ jsx
