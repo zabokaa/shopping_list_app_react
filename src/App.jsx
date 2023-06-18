@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { NewTodoForm } from "./NewTodoForm";
 import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-
 import "./styles.css";
 
 export default function App() {
@@ -40,9 +38,9 @@ export default function App() {
     // and use className, not class
     // here putting props inside:
   <> <NewTodoForm onSubmit={addTodo}/>   
-
      <h1 className="header">shopping list</h1>
-     <TodoList todos={todos}/>
+     <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}
+      />
   </>
   )
 }
