@@ -12,7 +12,12 @@ export default function App() {
   <><form className="new-item-form">   
       <div className="form-row">
         <label htmlFor="item">new item</label>
-        <input type="text" id="item" />
+        <input 
+          value={newItem} 
+          onChange = {e => setNewItem(e.target.value)}
+          type="text"
+          id="item"
+        />
       </div>
       <button className="btn">add to list</button>
     </form>
