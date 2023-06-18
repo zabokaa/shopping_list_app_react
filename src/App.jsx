@@ -24,10 +24,16 @@ export default function App() {
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
         if (todo.id === id) {
-          return { ...todo, completed} 
+          return { ...todo, completed} //creating new state
         }
-
+        return todo  //so it will show the list
       })
+    })
+  }
+
+  function deleteTodo(id) {
+    setTodos(currentTodos => {
+      return currentTodos.filter(todo => todo.id !== id)
     })
   }
 
@@ -60,7 +66,9 @@ export default function App() {
                   onChange = {e => toggleTodo(todo.id, e.target.checked)} />
                 {todo.title}
               </label>
-              <button className="btn btn-danger">already bought</button>
+              <button 
+                onClick={() => deleteTodo(todo.id)}
+                className="btn btn-danger">already bought</button>
           </li>
           )
        })}         
