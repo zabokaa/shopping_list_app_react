@@ -6,5 +6,6 @@ export default function App() {
       <label htmlFor="item">new item</label>
       <input type="text" id="item" />
     </div>
+    <button className="btn">add to list</button>
   </form>
 }
