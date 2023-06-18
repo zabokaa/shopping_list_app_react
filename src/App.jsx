@@ -1,6 +1,11 @@
+import { useState } from "react";
 import "./styles.css";
 
 export default function App() {
+  // states are inmutable !!
+  const [newItem, setNewItem] = useState("")
+  // setNewItem("xyyy") --> would loop foreva
+
   return (
     // IN JSX use fragment, it is an empty tag
     // className
