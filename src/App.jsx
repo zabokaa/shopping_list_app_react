@@ -6,14 +6,27 @@ export default function App() {
   const [newItem, setNewItem] = useState("")
   // setNewItem("xyyy") --> would loop foreva
 
+  const [todos, setTodos] = useState([])
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setTodos(currentTodos => {
+      return [
+        ...currentTodos,
+        { id: crypto.randomUUID(), title: newItem, completed: false},
+      ]
+    })
+  }
+
   return (
     // IN JSX use fragment, it is an empty tag
     // className
-  <><form className="new-item-form">   
+  <><form onSubmit = {handleSubmit} className="new-item-form">   
       <div className="form-row">
         <label htmlFor="item">new item</label>
         <input 
           value={newItem} 
+          // changing state: 
           onChange = {e => setNewItem(e.target.value)}
           type="text"
           id="item"
