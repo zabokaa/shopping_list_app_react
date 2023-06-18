@@ -54,7 +54,8 @@ export default function App() {
       <button className="btn">add to list</button>
     </form>
      <h1 className="header">shopping list</h1>
-     <ul className="list">     
+     <ul className="list">    
+        {todos.length === 0 && "fridge is full"} 
       {/* loops in react/jsx with .map*/}
         {todos.map(todo => {
           return (
@@ -67,7 +68,7 @@ export default function App() {
                 {todo.title}
               </label>
               <button 
-                onClick={() => deleteTodo(todo.id)}
+                onClick={() => deleteTodo(todo.id)}  //passing a func!!
                 className="btn btn-danger">already bought</button>
           </li>
           )
