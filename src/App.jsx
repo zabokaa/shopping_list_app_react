@@ -5,7 +5,12 @@ import "./styles.css";
 
 export default function App() {
  
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue == null) return []
+    return JSON.parse(localValue)
+    }
+  )
 //new hook 4 storing info -- here every update of todos -- in local storage
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(todos))
