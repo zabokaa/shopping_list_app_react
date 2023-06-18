@@ -1,23 +1,18 @@
 import { useState } from "react";
+import { NewTodoForm } from "./NewTodoForm";
 import "./styles.css";
 
 export default function App() {
-  // states are inmutable !!
-  const [newItem, setNewItem] = useState("")
-  // setNewItem("xyyy") --> would loop foreva
-
+ 
   const [todos, setTodos] = useState([])
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function addTodo(title) {
     setTodos(currentTodos => {
       return [
         ...currentTodos,
-        { id: crypto.randomUUID(), title: newItem, completed: false},
+        { id: crypto.randomUUID(), title, completed: false},
       ]
     })
-    // to clear the put-in-value
-    setNewItem("")
   }
 
   function toggleTodo(id, completed) {
@@ -39,20 +34,10 @@ export default function App() {
 
   return (
     // IN JSX use fragment, it is an empty tag
-    // className
-  <><form onSubmit = {handleSubmit} className="new-item-form">   
-      <div className="form-row">
-        <label htmlFor="item">new item</label>
-        <input 
-          value={newItem} 
-          // changing state: 
-          onChange = {e => setNewItem(e.target.value)}
-          type="text"
-          id="item"
-        />
-      </div>
-      <button className="btn">add to list</button>
-    </form>
+    // and use className, not class
+    // here putting props inside:
+  <> <NewTodoForm onSubmit={addTodo}/>   
+
      <h1 className="header">shopping list</h1>
      <ul className="list">    
         {todos.length === 0 && "fridge is full"} 
